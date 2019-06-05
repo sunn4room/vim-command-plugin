@@ -21,7 +21,7 @@ function RunGitCommand(cmd,mode)
 	if b:gpath=="null"
 		echo "Git path is null."
 	else
-		call RunCommand("git -C ".b:gpath." ".a:cmd,a:mode)
+		call RunCommand("git ".a:cmd,a:mode)
 	endif
 endfunction
 
@@ -60,7 +60,7 @@ else:
 	srcidx=(curpath+"/").rfind("/src/")
 	if srcidx>=0 and os.path.exists(curpath[:srcidx]+"/pom.xml"):
 		vim.command("let b:mpath='"+curpath[:srcidx]+"'")
-	else
+	else:
 		vim.command("let b:mpath='null'")
 EOF
 endfunction
